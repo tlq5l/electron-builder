@@ -1,5 +1,22 @@
 # electron-forge-maker-appimage
 
+## 27.0.0-alpha.12
+### Patch Changes
+
+- Fix(forge): make the electron-forge-maker-\* packages loadable by Electron Forge 6+ (`MakerBase`-compatible default export class, also exported by name, with the maker `config` applied as the target's options); calling the default export as an Electron Forge 5 maker function still works _[`#10351`](https://github.com/electron-userland/electron-builder/pull/10351) [`1e32919`](https://github.com/electron-userland/electron-builder/commit/1e32919ec0bd9e5948376836ce26acb1fdc43655)_
+
+<details><summary>Updated 1 dependency</summary>
+
+<small>
+
+[`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`0b508ab`](https://github.com/electron-userland/electron-builder/commit/0b508abc19243c7309931c693f7b91bc66d62fb9) [`1e32919`](https://github.com/electron-userland/electron-builder/commit/1e32919ec0bd9e5948376836ce26acb1fdc43655) [`4cd8a92`](https://github.com/electron-userland/electron-builder/commit/4cd8a921efb5e05f1b54489a02a7c2e5df54677e) [`46be1f4`](https://github.com/electron-userland/electron-builder/commit/46be1f48e51a59b846ca76e631fc9e4e33348fb5) [`6e3153b`](https://github.com/electron-userland/electron-builder/commit/6e3153bc6453dfa9ee01899fcd7de58f94d3763c) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825)
+
+</small>
+
+- `app-builder-lib@27.0.0-alpha.12`
+
+</details>
+
 ## 27.0.0-alpha.11
 ### Patch Changes
 

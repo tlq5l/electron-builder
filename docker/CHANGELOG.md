@@ -1,5 +1,10 @@
 # docker
 
+## 26.12.0-alpha.1
+### Patch Changes
+
+- Chore(docker): update Node.js 24 to 24.22.0 and Node.js 22 to 22.23.3 in the images _[`#10341`](https://github.com/electron-userland/electron-builder/pull/10341) [`6ef5c23`](https://github.com/electron-userland/electron-builder/commit/6ef5c230a6cabacb526a2dd8411aaaaeb2f5fd89)_
+
 ## 26.12.0-alpha.0
 ### Minor Changes
 

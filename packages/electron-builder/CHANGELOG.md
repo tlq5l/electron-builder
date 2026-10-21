@@ -1,5 +1,41 @@
 # electron-builder
 
+## 27.0.0-alpha.12
+### Major Changes
+
+- Feat!: add `fileOptions.excludedExts` (root and per platform, a list or a single string such as `-c.fileOptions.excludedExts=default`) to configure the file extensions excluded from the app files and the copied `node_modules` — `"default"` is the built-in list, which now includes `pdb`, any other entry adds an extension, and `"!ext"` removes one (a list of removals only, such as `["!pdb"]`, is rejected: write `["default", "!pdb"]`; an invalid list fails the build when the configuration is validated, at the root and in every platform section); a later layer's list replaces an earlier one instead of being merged with it (`extends` child, programmatic or `-c` configuration, platform section, `mas` / `masDev`); a `files` pattern that names an excluded extension (e.g. `native/addon.pdb`) re-includes only the files it matches. BREAKING: removed the `includePdb` option — `electron-builder migrate-schema` rewrites `includePdb: true` to `"fileOptions": { "excludedExts": ["default", "!pdb"] }` and `includePdb: false` to `"fileOptions": { "excludedExts": ["default"] }`. _[`#10339`](https://github.com/electron-userland/electron-builder/pull/10339) [`0b508ab`](https://github.com/electron-userland/electron-builder/commit/0b508abc19243c7309931c693f7b91bc66d62fb9)_
+- Feat(signing)!: fail the build when the signing key isn't in `updateManifest.publicKey` _[`#10350`](https://github.com/electron-userland/electron-builder/pull/10350) [`6e3153b`](https://github.com/electron-userland/electron-builder/commit/6e3153bc6453dfa9ee01899fcd7de58f94d3763c)_
+
+  BREAKING CHANGE: when `updateManifest.publicKey` is set explicitly and none of the keys the build signs update
+  manifests with is in it, a publishing build now fails at build start, before anything is packed or uploaded, with an
+  `InvalidConfigurationError` naming the key ids of the signing keys and of the listed keys (never key material). Such
+  a release embeds no key it is signed with, so its installs would reject manifests signed with the current key(s).
+  This was a warning before; a build without a publish policy still only warns. For a deliberate cutover release that
+  is signed with the old key but embeds only the new one, set the new `updateManifest.allowSigningKeyOutsideTrustList:
+  true` (explicit config only) to keep the warning. Nothing changes when `publicKey` is not set, since the trust list is
+  then derived from the signing keys. See the v27 breaking changes guide.
+- Feat(signing)!: `ELECTRON_BUILDER_UPDATE_SIGN_KEY` takes the PEM file base64-encoded on one line, so CI systems such as GitLab can mask it (#10344) — encode it with `base64 < update-private-key.pem | tr -d '\n'`, and for key rotation concatenate the PEM files and encode them once (`cat old.pem new.pem | base64 | tr -d '\n'`). BREAKING for the 27.0.0 alphas: a raw PEM, or any value that is not the standard base64 of complete PEM private keys (quoted, URL-safe, truncated, separately encoded keys joined together), now fails with an `InvalidConfigurationError` that never prints the value, and invalid or duplicate signing keys from any source are reported as an `InvalidConfigurationError` too; `ELECTRON_BUILDER_UPDATE_SIGN_KEY_FILE` and `updateManifest.signingKey` / `signingKeyFile` still take PEM, and `electron-builder create-update-key` prints the encode command for the key file it writes. _[`#10347`](https://github.com/electron-userland/electron-builder/pull/10347) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825)_
+
+### Patch Changes
+
+- Fix: deduplicate publish tasks by value _[`#10134`](https://github.com/electron-userland/electron-builder/pull/10134) [`48c0645`](https://github.com/electron-userland/electron-builder/commit/48c0645162d89be002407db3c4714bb935dc1c19)_
+
+<details><summary>Updated 5 dependencies</summary>
+
+<small>
+
+[`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`08d4a10`](https://github.com/electron-userland/electron-builder/commit/08d4a10765028f9a36c88aefcae4cbdc421dd358) [`8b71ed8`](https://github.com/electron-userland/electron-builder/commit/8b71ed87224beed7c0674fdd312d54047095d965) [`0b508ab`](https://github.com/electron-userland/electron-builder/commit/0b508abc19243c7309931c693f7b91bc66d62fb9) [`1e32919`](https://github.com/electron-userland/electron-builder/commit/1e32919ec0bd9e5948376836ce26acb1fdc43655) [`4cd8a92`](https://github.com/electron-userland/electron-builder/commit/4cd8a921efb5e05f1b54489a02a7c2e5df54677e) [`b1460cc`](https://github.com/electron-userland/electron-builder/commit/b1460cc01adb394db3cffd1ba4b547b4181c562d) [`3910c94`](https://github.com/electron-userland/electron-builder/commit/3910c945cf9a4610072d2a9a4a01ad0131dd67de) [`46be1f4`](https://github.com/electron-userland/electron-builder/commit/46be1f48e51a59b846ca76e631fc9e4e33348fb5) [`9e0137e`](https://github.com/electron-userland/electron-builder/commit/9e0137e41597720f2ba4b473b066e56e41bcf5de) [`6e3153b`](https://github.com/electron-userland/electron-builder/commit/6e3153bc6453dfa9ee01899fcd7de58f94d3763c) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825)
+
+</small>
+
+- `app-builder-lib@27.0.0-alpha.12`
+- `builder-util@27.0.0-alpha.12`
+- `builder-util-runtime@10.0.0-alpha.11`
+- `electron-publish@27.0.0-alpha.12`
+- `dmg-builder@27.0.0-alpha.12`
+
+</details>
+
 ## 27.0.0-alpha.11
 ### Patch Changes
 

@@ -1,5 +1,22 @@
 # electron-builder-squirrel-windows
 
+## 27.0.0-alpha.12
+### Patch Changes
+
+
+<details><summary>Updated 2 dependencies</summary>
+
+<small>
+
+[`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825) [`08d4a10`](https://github.com/electron-userland/electron-builder/commit/08d4a10765028f9a36c88aefcae4cbdc421dd358) [`0b508ab`](https://github.com/electron-userland/electron-builder/commit/0b508abc19243c7309931c693f7b91bc66d62fb9) [`1e32919`](https://github.com/electron-userland/electron-builder/commit/1e32919ec0bd9e5948376836ce26acb1fdc43655) [`4cd8a92`](https://github.com/electron-userland/electron-builder/commit/4cd8a921efb5e05f1b54489a02a7c2e5df54677e) [`b1460cc`](https://github.com/electron-userland/electron-builder/commit/b1460cc01adb394db3cffd1ba4b547b4181c562d) [`46be1f4`](https://github.com/electron-userland/electron-builder/commit/46be1f48e51a59b846ca76e631fc9e4e33348fb5) [`6e3153b`](https://github.com/electron-userland/electron-builder/commit/6e3153bc6453dfa9ee01899fcd7de58f94d3763c) [`f8a6719`](https://github.com/electron-userland/electron-builder/commit/f8a6719bded7b02881f7b88778f1645a53321825)
+
+</small>
+
+- `app-builder-lib@27.0.0-alpha.12`
+- `builder-util@27.0.0-alpha.12`
+
+</details>
+
 ## 27.0.0-alpha.11
 ### Patch Changes
 

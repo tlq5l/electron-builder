@@ -1,5 +1,25 @@
 ## 4.3.0
 
+## 7.0.0-alpha.11
+### Patch Changes
+
+- Fix: close embedded blockmap files exactly once on parse failures _[`#10120`](https://github.com/electron-userland/electron-builder/pull/10120) [`3bbc563`](https://github.com/electron-userland/electron-builder/commit/3bbc5634c288361a02311aa6ac25a0663a1c7e82)_
+- Refactor(updater): split `GitHubProvider.getLatestVersion` into helpers (internal refactor, no behavior change) _[`#10290`](https://github.com/electron-userland/electron-builder/pull/10290) [`4705c20`](https://github.com/electron-userland/electron-builder/commit/4705c2084ca769b5bca98f08370bc89218048744)_
+- Fix(nsis): don't plan a differential download against a cached block map of another release. The cached block map is replaced when a download finishes, but the cached installer only when the update is installed, so a release found before the previous one was installed was planned against the wrong base: every differential byte was downloaded, the sha512 check failed, and the full installer was downloaded too. A cached block map that does not end at the cached installer's size is now ignored and the installed version's block map is fetched from the server. _[`#10337`](https://github.com/electron-userland/electron-builder/pull/10337) [`9ebb992`](https://github.com/electron-userland/electron-builder/commit/9ebb9924b76915d29fbb8c8097288eacc005e7f5)_
+- Fix(updater): treat channel "latest" as stable-only when allowPrerelease is enabled _[`#10360`](https://github.com/electron-userland/electron-builder/pull/10360) [`a3c9240`](https://github.com/electron-userland/electron-builder/commit/a3c9240ca53bc33f0bee77c1d67aa8f4746ff6f4)_
+
+<details><summary>Updated 1 dependency</summary>
+
+<small>
+
+[`8b71ed8`](https://github.com/electron-userland/electron-builder/commit/8b71ed87224beed7c0674fdd312d54047095d965) [`46be1f4`](https://github.com/electron-userland/electron-builder/commit/46be1f48e51a59b846ca76e631fc9e4e33348fb5)
+
+</small>
+
+- `builder-util-runtime@10.0.0-alpha.11`
+
+</details>
+
 ## 7.0.0-alpha.10
 ### Patch Changes
 
